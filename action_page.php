@@ -74,5 +74,16 @@ echo $comment;
 echo "<br>";
 ?>
 
+<?php
+$email_from="msmurphy14@hotmail.com";
+$to="msmurphy14@hotmail.com";
+$headers="From: $email_from \r\n";
+$headers.= "Reply-To: $email \r\n";
+$email_subject = "New Comment";
+$email_body = "You have received a comment from $name.\n".
+"Here is the message:\n $comment".
+mail($to,$email_subject,$email_body,$headers);
+?>
+
 </body>
 </html>
