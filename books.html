@@ -28,11 +28,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
   bottom: 0;
   height: inherit;
 }
-
-th {
-  text-align: left;
-}
-
 </style>
 </head>
 <body>
@@ -41,10 +36,12 @@ th {
 <div class="w3-top">
   <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
     <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-    <a href="Index.html" class="w3-bar-item w3-button w3-theme-l1">PreExpert</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Beliefs</a>
-    <a href="books.html" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Books</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Ideas</a>
+    <a href="Index.html" class="w3-bar-item w3-button w3-hide-small w3-hover-white">PreExpert</a>
+    <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Beliefs</a> 
+w3-bar-item w3-button w3-theme-l1
+    -->
+ <a href="books.html" class="w3-bar-item w3-button w3-theme-l1">Books</a>
+    <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Ideas</a> -->
   </div>
 </div>
 
@@ -70,151 +67,28 @@ th {
   <div class="w3-row w3-padding-64">
     <div class="w3-twothird w3-container">
       <h1 class="w3-text-teal">Books</h1>
-      <p>My reading list - I started writing brief reviews in 2020. The vast majority of the books here are to be read so reviews can be added when and if I ever get to them. The "to-read" list will grow faster than I can read them. So be it.</p>
-      <p>This table will sort by the header you click on.</p>
-      <table id="myTable">
-      	  <col width="10%">
-  <col width="18%">
-    <col width="18%">
-  <col width="18%">
-    <col width="18%">
-  <col width="18%">
-  <tr>
-   <!--When a header is clicked, run the sortTable function, with a parameter, 0 for sorting by names, 1 for sorting by country:-->  
-    <th onclick="sortTable(0)">Book</th>
-    <th onclick="sortTable(1)">Author</th>
-    <th onclick="sortTable(2)">Topic</th>
-    <th onclick="sortTable(3)">Informative score</th>
-    <th onclick="sortTable(4)">Readability score</th>
-    <th onclick="sortTable(5)">Total score</th>
-  </tr>
-  <tr>
-    <td>Berglunds snabbkop</td>
-    <td>Sweden</td>
-    <td>Berglunds snabbkop</td>
-    <td>5</td>
-    <td>6</td>
-    <td>7</td>
-  </tr>
-  <tr>
-    <td>North/South</td>
-    <td>UK</td>
-        <td>North/South</td>
-    <td>2</td>
-        <td>3</td>
-    <td>4</td>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Germany</td>
-     <td>Alfreds Futterkiste</td>
-    <td>1</td>
-     <td>2</td>
-    <td>3</td>
-  </tr>
-  <tr>
-    <td>Koniglich Essen</td>
-    <td>Germany</td>
-        <td>Koniglich Essen</td>
-    <td>7</td>
-        <td>6</td>
-    <td>9</td>
-  </tr>
-  <tr>
-    <td>Magazzini Alimentari Riuniti</td>
-    <td>Italy</td>
-        <td>Magazzini Alimentari Riuniti</td>
-    <td>Italy</td>
-        <td>Magazzini Alimentari Riuniti</td>
-    <td>Italy</td>
-  </tr>
-  <tr>
-    <td>Paris specialites</td>
-    <td>France</td>
-        <td>Paris specialites</td>
-    <td>France</td>
-        <td>Paris specialites</td>
-    <td>France</td>
-  </tr>
-  <tr>
-    <td>Island Trading</td>
-    <td>UK</td>
-        <td>Island Trading</td>
-    <td>UK</td>
-        <td>Island Trading</td>
-    <td>UK</td>
-  </tr>
-  <tr>
-    <td>Laughing Bacchus Winecellars</td>
-    <td>Canada</td>
-        <td>Laughing Bacchus Winecellars</td>
-    <td>Canada</td>
-        <td>Laughing Bacchus Winecellars</td>
-    <td>Canada</td>
-  </tr>
-</table>
-
-<script>
-function sortTable(n) {
-  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-  table = document.getElementById("myTable");
-  switching = true;
-  //Set the sorting direction to ascending:
-  dir = "asc"; 
-  /*Make a loop that will continue until
-  no switching has been done:*/
-  while (switching) {
-    //start by saying: no switching is done:
-    switching = false;
-    rows = table.rows;
-    /*Loop through all table rows (except the
-    first, which contains table headers):*/
-    for (i = 1; i < (rows.length - 1); i++) {
-      //start by saying there should be no switching:
-      shouldSwitch = false;
-      /*Get the two elements you want to compare,
-      one from current row and one from the next:*/
-      x = rows[i].getElementsByTagName("TD")[n];
-      y = rows[i + 1].getElementsByTagName("TD")[n];
-      /*check if the two rows should switch place,
-      based on the direction, asc or desc:*/
-      if (dir == "asc") {
-        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-          //if so, mark as a switch and break the loop:
-          shouldSwitch= true;
-          break;
-        }
-      } else if (dir == "desc") {
-        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-          //if so, mark as a switch and break the loop:
-          shouldSwitch = true;
-          break;
-        }
-      }
-    }
-    if (shouldSwitch) {
-      /*If a switch has been marked, make the switch
-      and mark that a switch has been done:*/
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-      //Each time a switch is done, increase this count by 1:
-      switchcount ++;      
-    } else {
-      /*If no switching has been done AND the direction is "asc",
-      set the direction to "desc" and run the while loop again.*/
-      if (switchcount == 0 && dir == "asc") {
-        dir = "desc";
-        switching = true;
-      }
-    }
-  }
-}
-</script>
+      <p>Brief descriptions of notable books I've read since 2021, written in 5 minutes or less.</p>
+<!--<p>Test: <a href="test.html" target="_blank">test</a></p>-->
+ <h3 class="w3-text-teal">The Fourth Turning - William Strauss & Neil Howe</h3>
+<p>I believe in cycles. They are a natural result of lag times in a system seeking equilibrium, which results in overshoot and undershoot. The only time the system is in equilibrium is when it passes through it. I believe cycles of different frequencies are happening all the time, and occassionally they reach a minimum or maximum together and it makes for a unique event (micro cycles combine to form macro cycles). The problem I have is a macro cycle thesis is hard to disprove. For example I think of Carlota Perez's Technological Revolutions and Financial Capital - there are some very cool conceptual maps of when technology is installed and deployed, but the times are so vast that you can basically pick your events to fit the framework or adapt it. You're basically trying to use patterns to fit a historical set of narratives. I've also noticed, the more the author and the reader know about a given period - typically the most recent period - the harder it is to make the story work (because the reader and author are more aware of the nuances). So the Fourth Turning is fun (in the way reading a horoscope is fun), but I'll be honest - I flipped through most of it. If I tried to read certain sections my brain would wander. I think it's because I don't believe most of the content. I'm also not a fan of such a US-centric cycle view when we are dealing with a global economy and global technologies (internet, automation, etc). Now I have to give the Fourth Turning credit - it nailed the predictions. It really is something to look at in retrospect. Terrorist attacks, a financial crisis, a pandemic, and social and political unrest was not the most likely combination! And maybe the thesis is even "right" that darkness continues until the next turning. But does this mean the author's nailed it? Or is it survivorship bias (we're only reading this book because it made successful predictions - I haven't even heard of the cycle books that didn't work out). <i>Mar 2 2021.</i> </p>
+ <h3 class="w3-text-teal">User Illusion - Tor Norretranders</h3>
+<p>This was a great read about consciousness. It covered ground I've already spent a fair bit of time on: entropy (macro and microstates), information, paradoxes, etc. I was familiar with some of the stuff about the nature of the brain (system 1 and 2, split brain experiments, the way our consciousness makes things up). But there was a lot of content that was new (consciousness processing rates, response times, and the specific experiments behind each thesis). The book was probably a bit too long and I found some parts repetitive, but the author covers a lot of complicated ground and I thought he made the material very digestible. He also presented areas of debate so the reader is aware of the controversies and open questions. I'm going to have to go back to this one at some point. Areas I need to spend time to further understand are the interaction of blackholes and information theory, how consciousness came to humankind, the collapse of communism as a function of information, how earth exports disorder? <i>Feb 23 2021.</i> </p>
+ <h3 class="w3-text-teal">Fed Up - Danielle DiMartino Booth</h3>
+<p>This was a quick and easy read - it's mostly a memoir of Danielle's time at the Dallas Fed. While it is clear that the writer disagrees with the Fed's understanding and control of the US (and global) economy, I think that's pretty well understood already. I read "The Man Who Knew" a few years ago and it's got a part of it where the <i>Maestro</i> and the Board get into a debate about what causes inflation and it becomes clear no one really knows what they're talking about. So this has been understood for decades. It's not clear if there's any better way to do it. Would it have been useful to tighten into the GFC? Probably not. What about letting all the banks fail? What about letting none of them fail? Does the Fed actually have any real power or are they doomed to steer things where they were going anyways? There are no answers in this book, but I'm not sure there are anywhere. <i>Feb 10 2021.</i> </p>
+ <h3 class="w3-text-teal">Beyond diversification - Sebastian Page</h3>
+<p>I heard an interview with Sebastian and was intrigued enough to get his book. It's largely a collection of his views on the big market debates - how to forecast risk, reward, and construct a portfolio. On return forecasting, you can use a risk-pricing approach or a valuation approach. His view is that CAPM is flawed (gaussian, rational investor, valuation agnostic, betas not forward looking) but more useful than investors think. He quotes Markowitz "it's like studying the motion of objects on earth under the assumption that the earth has no air". Simple back of the envelope approaches can be useful too. Take the E/P ratio and add the 10yr breakeven. Bonds are easier though - take the yield to maturity and leave it at that! He's also got book recommendations - "Capital Ideas" by Bernstein and "Capital Ideas Evolving". Adding to my list... <i>Feb 8 2021.</i></p>
+ <h3 class="w3-text-teal">The Great Rupture - Viktor Shvets</h3>
+<p>Viktor has a unique big picture perspective on the world having lived in Russia, China and the West. He is very well read and tries to take lessons of past empires to understand the conditions that created the modern world, and tries to make some projections of what lies ahead. That is a difficult task - he admits that the changes in both technology and financialization are unprecedented and happening much faster than past transitions. The outlook is not good, in short. Massive change, displacement of jobs, potential for conflict, and transition from a capitalist economy to communism. But it doesn't have to be all doom and gloom. There will be a bright future beyond the transition. <i>Jan 30 2021.</i></p>
+ <h3 class="w3-text-teal">Star Principle & 80/20 principle - Richard Koch</h3>
+<p>I heard Tim Ferriss interview Richard who talked about the 80/20 principle and the Star principle so I picked up the books. The 80/20 principle or Pareto principle is quite well known but Richard reminds you to focus on the parts of your life that add value. It is a really glutinous efficient way to run your life and I can see why a "Four Hour Work Week" Ferriss would like it. Lots of aspirational advice. The Star Principle is about investing in growth companies. It's not typically my game but in a complicated world there is something to be said for its simplicity - buy the industry leaders in fast growing sectors. This was written in 2010 - suffice it to say if you followed his advice up until now you would have smashed it out of the park. I'm not sure it would do that well from here, however. <i>Jan 8 2021</i></p>
     </div>
-<!--     <div class="w3-third w3-container">
+
+ <div class="w3-third w3-container">
+<!--    
       <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
       <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
-    </div>-->
+  -->
+    </div>
   </div>
 <!--
   <div class="w3-row">
@@ -222,8 +96,8 @@ function sortTable(n) {
       <h1 class="w3-text-teal">Heading</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum
         dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-    
+    </div>-->
+<!--    
     <div class="w3-third w3-container">
       <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
       <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
@@ -240,8 +114,8 @@ function sortTable(n) {
       <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
       <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
     </div>
-  </div>-->
-
+  </div>
+-->
   <!-- Pagination 
   <div class="w3-center w3-padding-32">
     <div class="w3-bar">
